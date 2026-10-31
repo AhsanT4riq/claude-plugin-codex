@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:rescue"
+  short_description: "Claude Code rescue from Codex"
+  default_prompt: "Use $claude-rescue for this Claude Code delegation request."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:adversarial-review"
+  short_description: "Claude Code adversarial review from Codex"
+  default_prompt: "Use $claude-adversarial-review for this Claude Code delegation request."

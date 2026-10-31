@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:result"
+  short_description: "Claude Code result from Codex"
+  default_prompt: "Use $claude-result for this Claude Code delegation request."

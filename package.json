@@ -1,0 +1,21 @@
+{
+  "name": "claude-plugin-codex",
+  "version": "0.3.0-rc.6",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Delegate work from Codex to Claude Code",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "claude-companion": "bin/claude-companion.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "install:local": "node scripts/install.mjs install",
+    "uninstall:local": "node scripts/install.mjs uninstall",
+    "release:check": "node scripts/package.mjs"
+  }
+}

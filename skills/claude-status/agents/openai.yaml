@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:status"
+  short_description: "Claude Code status from Codex"
+  default_prompt: "Use $claude-status for this Claude Code delegation request."

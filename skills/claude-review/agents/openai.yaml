@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:review"
+  short_description: "Claude Code review from Codex"
+  default_prompt: "Use $claude-review for this Claude Code delegation request."

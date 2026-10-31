@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:setup"
+  short_description: "Claude Code setup from Codex"
+  default_prompt: "Use $claude-setup for this Claude Code delegation request."

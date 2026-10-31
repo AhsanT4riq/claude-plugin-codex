@@ -1,0 +1,4 @@
+interface:
+  display_name: "claude:cancel"
+  short_description: "Claude Code cancel from Codex"
+  default_prompt: "Use $claude-cancel for this Claude Code delegation request."
