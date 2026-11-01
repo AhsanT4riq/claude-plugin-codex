@@ -21,17 +21,14 @@ This plugin is for Codex users who want an easy way to bring Claude Code into th
 
 ## Install
 
-Clone the repository and run the installer:
+Add the marketplace and install the plugin:
 
 ```bash
-git clone https://github.com/AhsanT4riq/claude-plugin-codex.git
-cd claude-plugin-codex
-node scripts/install.mjs install
+codex plugin marketplace add AhsanT4riq/claude-plugin-codex
+codex plugin add claude@claude-plugin-codex
 ```
 
-This copies the plugin into your Codex home (`$CODEX_HOME`, default `~/.codex`) and links the seven skills. You don't need the checkout after installation.
-
-Start a new Codex chat, then run:
+Start a new Codex chat. The skills appear in the `$` picker as `claude:setup`, `claude:review` and so on. Run:
 
 ```text
 $claude-setup
@@ -56,7 +53,18 @@ $claude-status
 $claude-result
 ```
 
-To update, pull and run `node scripts/install.mjs install` again; earlier releases and job history are kept. To remove the plugin, run `node scripts/install.mjs uninstall`, which only removes what the installer created.
+To update:
+
+```bash
+codex plugin marketplace upgrade claude-plugin-codex
+codex plugin add claude@claude-plugin-codex
+```
+
+To remove the plugin, run `codex plugin remove claude@claude-plugin-codex`. Job history is kept in both cases.
+
+### Install without the plugin system
+
+On a Codex version without plugins, clone the repository and run `node scripts/install.mjs install`. This copies the bridge into your Codex home and links the seven skills into `~/.codex/skills`; `node scripts/install.mjs uninstall` removes only what it created. Don't use both install methods at once, or each skill appears twice.
 
 ## Usage
 

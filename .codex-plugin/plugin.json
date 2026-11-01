@@ -1,0 +1,30 @@
+{
+  "name": "claude",
+  "version": "0.3.0-rc.7",
+  "description": "Use Claude Code from Codex for code reviews and to delegate tasks to Claude.",
+  "author": {
+    "name": "Ahsan Tariq",
+    "url": "https://github.com/AhsanT4riq"
+  },
+  "homepage": "https://github.com/AhsanT4riq/claude-plugin-codex",
+  "repository": "https://github.com/AhsanT4riq/claude-plugin-codex",
+  "license": "Apache-2.0",
+  "keywords": ["claude", "claude-code", "anthropic", "code-review", "delegation"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Claude Code",
+    "shortDescription": "Review and delegate with Claude Code",
+    "longDescription": "Runs your local Claude Code CLI from Codex: read-only and adversarial code reviews, delegated tasks with per-turn read, edit or shell access, and background jobs you can check, fetch and cancel. Uses your existing Claude Code login.",
+    "developerName": "Ahsan Tariq",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://github.com/AhsanT4riq/claude-plugin-codex",
+    "defaultPrompt": [
+      "Use claude-setup to check that Claude Code is ready.",
+      "Use claude-review to review my uncommitted changes.",
+      "Use claude-rescue to investigate why the tests are failing."
+    ],
+    "brandColor": "#D97757",
+    "screenshots": []
+  }
+}

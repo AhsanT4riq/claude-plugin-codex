@@ -25,3 +25,8 @@ test('extracted archive installs outside checkout and performs both review workf
  assert.equal(fs.readFileSync(path.join(cwd,'change.txt'),'utf8'),'review fixture\n');
  run(process.execPath,[path.join(extracted,'scripts','install.mjs'),'uninstall','--codex-home',codex],root);assert.ok(fs.readdirSync(state).length>0);
 });
+test('Codex plugin manifest and marketplace match the package',()=>{
+ const read=f=>JSON.parse(fs.readFileSync(path.join(source,f),'utf8'));const pkg=read('package.json'),plugin=read('.codex-plugin/plugin.json'),market=read('.agents/plugins/marketplace.json');
+ assert.equal(plugin.version,pkg.version);assert.equal(plugin.license,pkg.license);assert.equal(plugin.skills,'./skills/');
+ const entry=market.plugins.find(p=>p.name===plugin.name);assert.ok(entry,'The marketplace lists the plugin.');assert.equal(entry.source.path,'./');
+});
