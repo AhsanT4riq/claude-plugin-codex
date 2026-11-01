@@ -1,8 +1,18 @@
 # Claude Code plugin for Codex
 
-Use Claude Code from inside Codex for code reviews or to delegate tasks to Claude.
+[![CI](https://github.com/AhsanT4riq/claude-plugin-codex/actions/workflows/ci.yml/badge.svg)](https://github.com/AhsanT4riq/claude-plugin-codex/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-This plugin is for Codex users who want an easy way to bring Claude Code into the workflow they already have. It is the reverse of [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) and is not affiliated with OpenAI or Anthropic.
+![Claude Code, inside Codex: reviews, adversarial reviews and delegated tasks from the Codex window](assets/social-preview.png)
+
+Use Claude Code from inside OpenAI Codex for code reviews or to delegate tasks to Claude Opus or Sonnet, without leaving the Codex window.
+
+This plugin is for Codex users who want an easy way to bring Claude Code into the workflow they already have. Codex writes the brief with the context Claude needs, runs your local Claude Code CLI, follows the job and checks the result. It is the reverse of [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) and is not affiliated with OpenAI or Anthropic.
+
+```bash
+codex plugin marketplace add AhsanT4riq/claude-plugin-codex
+codex plugin add claude@claude-plugin-codex
+```
 
 ## What You Get
 
