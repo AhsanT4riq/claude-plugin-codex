@@ -1,6 +1,6 @@
 {
   "name": "claude",
-  "version": "0.3.0-rc.7",
+  "version": "1.0.0",
   "description": "Use Claude Code from Codex for code reviews and to delegate tasks to Claude.",
   "author": {
     "name": "Ahsan Tariq",
