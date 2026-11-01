@@ -57,6 +57,21 @@ test('detached groups are recorded apart from the CLI group and a reused group n
   assert.equal(groupMayBeRunning({ ...live, processGroup: { pgid: 999_999_9 } }, null), true);
 });
 
+test('Linux ps start times that read up to two seconds early still count as the job\'s survivors', () => {
+  // Linux ps adds ticks to a whole-second boot time and truncates again, so a member started
+  // 0.4s after the job can read as 1.6s before it. The CLI leader's ps time carries the same error.
+  const leader = 'Sun Nov  1 04:54:02 2026';
+  const startedAt = new Date(Date.parse(leader) + 1600).toISOString();
+  const rows = [
+    { pid: 20, ppid: 1, pgid: 20, startTime: 'Sun Nov 1 04:54:02 2026' },
+    { pid: 21, ppid: 1, pgid: 20, startTime: 'Sun Nov 1 04:54:01 2026' },
+  ];
+  const job = { detachedGroups: [20], startedAt, processGroup: { pgid: 10, leaderStartTime: leader } };
+  assert.deepEqual(trackedSurvivors(job, rows).map(r => r.pid), [20], 'Members started before the CLI leader are not survivors.');
+  const legacy = { detachedGroups: [20], startedAt };
+  assert.deepEqual(trackedSurvivors(legacy, rows).map(r => r.pid), [20], 'Without a leader time, two seconds of slack applies.');
+});
+
 test('a process Claude backgrounds in another group is stopped at job end and reported', async t => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'bridge-detached-'));
   const cwd = path.join(root, 'repo'); fs.mkdirSync(cwd);

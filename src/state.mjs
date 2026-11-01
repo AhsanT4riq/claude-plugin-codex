@@ -83,10 +83,16 @@ export function recordDescendants(job, rows) {
   return changed;
 }
 // A recorded group number can be reused later, so only members started after the job count.
+// Linux ps derives start times from a whole-second boot time and truncates again, so they can
+// read up to ~2s early. Compare against the CLI leader's ps start time, which has the same error.
+export function surviveSince(job) {
+  const leader = Date.parse(job.processGroup?.leaderStartTime ?? '');
+  return Number.isFinite(leader) ? leader : Date.parse(job.startedAt || job.createdAt) - 2000;
+}
 export function trackedSurvivors(job, rows = processTable()) {
   if (!job.detachedGroups?.length) return [];
   if (!rows) return null;
-  const since = Date.parse(job.startedAt || job.createdAt) - 1000;
+  const since = surviveSince(job);
   return rows.filter(row => job.detachedGroups.includes(row.pgid) && row.pid !== process.pid && Date.parse(row.startTime) >= since);
 }
 // Stops processes Claude detached into other groups. Each signal re-checks identity first.

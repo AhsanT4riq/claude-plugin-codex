@@ -1,6 +1,6 @@
 {
   "name": "claude-plugin-codex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "license": "Apache-2.0",
   "description": "Delegate work from Codex to Claude Code",
